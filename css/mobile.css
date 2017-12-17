@@ -1,0 +1,8 @@
+@media all and ( max-width: 935px ) {
+    .header ,
+    .onepage-pagination ,
+body .callbackkiller {
+        display: none;
+    }
+
+}

@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<title>BTL-Dnepr</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon" href="http://btl-dnepr.ua/public/site/img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/rotator.css">
+	<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery-min.js"></script>
+	<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/bootstrap.js"></script>
+
+
+	<!--                    Slider                      -->
+	<link rel="stylesheet" href="http://btl-dnepr.ua/public/admin/site_scripts/css/liMarquee.css">
+	<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery-1.9.0.min.js"></script>
+	<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery.liMarquee.js"></script>
+	<link rel="shortcut icon" id="favicon" href="http://btl-dnepr.ua/public/site/img/favicon.png">
+	<meta name="author" content="Pete R.">
+
+
+	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/animate.css">
+	<script type="text/javascript" src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery.onepage-scroll.js"></script>
+	<link href='http://btl-dnepr.ua/public/admin/site_scripts/css/onepage-scroll.css' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/mobile.css">
+
+
+
+
+	<style>
+	</style>
+	<script>
+		$(document).ready(function(){
+			$(".main").onepage_scroll({
+				sectionContainer: "section",
+				responsiveFallback: 600,
+				loop: true
+			});
+		});
+
+	</script>
+
+
+
+
+	<style type='text/css'>
+		#contact_form_holder {
+			font-family: 'Verdana';
+			font-variant: small-caps;
+		}
+		#contact_form_holder input, #contact_form_holder textarea {
+			font-family:inherit;
+			padding:5px;
+		}
+		#contact_form_holder textarea {
+			height:100px;
+		}
+		#send_message {
+		}
+		#cf_submit_p { text-align:center; }
+
+		.error { display: none; padding:10px; color: #D8000C; font-size:12px;background-color: #FFBABA;}
+		.success { display: none; padding:10px; color: #044406; font-size:12px;background-color: #B7FBB9;}
+		#contact_logo { vertical-align: middle; }
+		.error img { vertical-align:top; }
+	</style>
+	<script type='text/javascript'>
+		/*
+		$(document).ready(function(){
+			$('#send_message').click(function(e){
+				e.preventDefault();
+
+				var error = false;
+				var name = $('#name').val();
+				var email = $('#email').val();
+				var subject = $('#subject').val();
+				var message = $('#message').val();
+
+				if(name.length == 0){
+					var error = true;
+					$('#name_error').fadeIn(500);
+				}else{
+					$('#name_error').fadeOut(500);
+				}
+				if(email.length == 0 || email.indexOf('@') == '-1'){
+					var error = true;
+					$('#email_error').fadeIn(500);
+				}else{
+					$('#email_error').fadeOut(500);
+				}
+				if(subject.length == 0){
+					var error = true;
+					$('#subject_error').fadeIn(500);
+				}else{
+					$('#subject_error').fadeOut(500);
+				}
+				if(message.length == 0){
+					var error = true;
+					$('#message_error').fadeIn(500);
+				}else{
+					$('#message_error').fadeOut(500);
+				}
+
+				if(error == false){
+					$('#send_message').attr({'disabled' : 'true', 'value' : 'Sending...' });
+
+					$.post("send_feedback", $("#contact_form").serialize(),function(result){
+						if(result == 'sent'){
+							$('#cf_submit_p').remove();
+							$('#mail_success').fadeIn(500);
+						}else{
+							$('#mail_fail').fadeIn(500);
+							$('#send_message').removeAttr('disabled').attr('value', 'Send The Message');
+						}
+					});
+				}
+			});
+		});
+		*/
+	</script>
+
+	<script type="text/javascript" language="javascript">
+		function call() {
+			if((document.getElementById("email").value)!=""||(document.getElementById("phone").value)!=""){
+				var msg   = $('#contact_form').serialize();
+				$.ajax({
+					type: 'POST',
+					url: '/ajax/send_feedback',
+					data: msg,
+					success: function(data) {
+						$('.results').html(data);
+					},
+					error:  function(xhr, str){
+						alert('Возникла ошибка: ' + xhr.responseCode);
+					}
+				});
+				$('#contact_form').css('display','none');
+				$('.success-1').css('display','block');
+				$('#btn-myclose-1').css('display','block');
+			}
+			else{
+				$('#contact_form input#email').css('background-color','#E3D74F');
+				$('#contact_form input#phone').css('background-color','#E3D74F');
+				$('#send-error').css('display','block');
+			}
+
+		}
+		function call_2() {
+
+			if((document.getElementById("email-2").value)!=""||(document.getElementById("phone-2").value)!=""){
+				var msg   = $('#contact_form-2').serialize();
+				$.ajax({
+					type: 'POST',
+					url: '/ajax/send_feedback',
+					data: msg,
+					success: function(data) {
+						$('.results').html(data);
+					},
+					error:  function(xhr, str){
+						alert('Возникла ошибка: ' + xhr.responseCode);
+					}
+				});
+				$('#contact_form-2').css('display','none');
+				$('.success-2').css('display','block');
+				$('#btn-myclose-2').css('display','block');
+			}
+			else{
+				$('#contact_form-2 input#email-2').css('background-color','#E3D74F');
+				$('#contact_form-2 input#phone-2').css('background-color','#E3D74F');
+				$('#send-error-2').css('display','block');
+			}
+
+		}
+	</script>
+
+	<link rel="stylesheet" href="https://cdn.callbackkiller.com/widget/cbk.css">
+	<script type="text/javascript" src="https://cdn.callbackkiller.com/widget/cbk.js?wcb_code=b5fc669236863577324799c65bb58118" charset="UTF-8" async></script>
+
+
+</head>
+<body style="">
+<div class="header">
+	<div class="wrapper">
+		<a class="logo" href="#"></a>
+		<a class="mail" >info@btl-dnepr.ua</a>
+		<span class="phone"><span>+</span><span>38</span> <span>(067)</span> 566 96 60</span>
+		<div class="lang-panel">
+			<a class="active" href="http://btl-dnepr.ua/ru">Ru</a>
+			<a class="" href="http://btl-dnepr.ua/ua">Ua</a>
+			<a class="" href="http://btl-dnepr.ua/en">En</a>
+		</div>
+		<a class="feedback" href="#" onclick="$('#contact_form').css('display','block');$('.success-1').css('display','none'); $('#btn-myclose-1').css('display','none');" data-toggle="modal" data-target=".feedback-popup">Обратная связь</a>
+		<a class="vacancies" href="/promoter-work" target='_blank'>Вакансии</a>
+	</div>
+</div>
+
+<div class="scroll-wrapper">
+<div>
+	<ul class="name-of-blocks">
+		<li>Старт</li>
+		<li>Маркетинговые сервисы</li>
+		<li>Партнерство</li>
+		<li>О нас</li>
+		<li>Довольные Заказчики</li>
+		<li>НАС РЕКОМЕНДУЮТ</li>
+	</ul>
+</div>
+<div class="main">
+<section class="page1">
+	<div class="page info">
+		<div class="wrapper">
+			<div class="content">
+				<h1 class=" animated bounceInDown parser">Хотите, чтобы каждый маркетинговый проект приносил <br>Вам результат, на который Вы рассчитываете?</h1>
+				<!-- <p class="txt-info blured animated bounceInDown"></p> -->
+				<p class="txt-info animated bounceInDown">Полевые проекты несут в себе ряд рисков, связанных с человеческим фактором.<br> Опыт и профессионализм нашей команды позволяет стабильно получать блестящие результаты.</p>
+				<!--<a class="green-btn animated bounceInDown" href="#" onclick="$('#contact_form-2').css('display','block');$('.success-2').css('display','none'); $('#btn-myclose-2').css('display','none');" data-toggle="modal" data-target=".order-popup">далее на сайт</a>-->
+				<!-- <a class="new-next green-btn animated bounceInDown next-block" href="#" style="-webkit-border-radius: 5px 5px 33px 33px !important;-moz-border-radius: 5px 5px 33px 33px!important;border-radius: 5px 5px 33px 33px !important;background: none;  display: table; width:auto; height:auto;margin: 40px auto; margin-top:75px;padding: 10px 25px;background-color: #4db848;" onclick="//$('#contact_form-2').css('display','block');$('.success-2').css('display','none'); $('#btn-myclose-2').css('display','none');">далее на сайт<span></span></a> -->
+				<!--<a class="next-block animated bounceInDown" href="#"></a>-->
+
+				<div class="ex-scroll-button animated next-block bounceInDown" onclick="">Крутить вниз</div>
+				<style type="text/css">
+					.ex-scroll-button {
+						margin-top: 120px;
+					}
+				</style>
+
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page2">
+	<div class="page services">
+		<div class="wrapper">
+			<div class="content">
+				<h2>УСЛУГИ</h2>
+				<div class="articles-wrapper">
+					<a class="article animated" href="#" data-toggle="modal" data-target=".service-popup1">
+						<img src="http://btl-dnepr.ua/public/site/img/service-1.png">
+						<p>Стимулирование <br /> покупательской активности </p>
+					</a>
+					<a class="article animated" href="#" data-toggle="modal" data-target=".service-popup2">
+						<img src="http://btl-dnepr.ua/public/site/img/service-2.png">
+						<p>Стимулирование сбыта<br />
+                            в торговых сетях и рознице</p>					</a>
+					<a class="article animated" href="#" data-toggle="modal" data-target=".service-popup3">
+						<img src="http://btl-dnepr.ua/public/site/img/service-3.png">
+						<p>Организация событий</p>
+					</a>
+					<a class="article animated" href="#" data-toggle="modal" data-target=".service-popup4">
+						<img src="http://btl-dnepr.ua/public/site/img/service-4.png">
+						<p>Маркетинговые исследования<br />
+                            и социологические опросы</p>
+					</a>
+					<a class="article animated" href="#" data-toggle="modal" data-target=".service-popup5">
+						<div class="autsorc">
+							<img src="http://btl-dnepr.ua/public/site/img/service-5.png">
+							<p>Аутсорсинг<br />
+                                региональной структуры</p>
+						</div>
+					</a>
+					<a class="article animated" href="#" data-toggle="modal" data-target=".service-popup6">
+						<img src="http://btl-dnepr.ua/public/site/img/service-6.png">
+						<p>Прямой маркетинг</p>
+					</a>
+					<div class="clrbth"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="page5">
+	<div class="page partners">
+	   <div class="wrapper">
+			<div class="content">
+				<div class="top">
+					<div class="left animated">
+						<h3>Партнерство</h3>
+						<p>
+							BTL-Днепр уже не первый год является региональным представительством в ряде городов для крупных международных агентств, таких как Havas Engage, Talan Communications, Media Arts Group (FCB Kiev), Business Tuning Center и для многих других агентств. Имея должный опыт и ресурс, предлагаем уникальную услугу для маркетинговых и рекламных агентств: 						</p>
+						<a class="map" href="http://btl-dnepr.ua/public/site/img/BTL.pdf" target="_blank">
+							<div class="rotationBlock mapRotator">
+								<div class="backFaceRotator mapBackFaceFix">
+									<div class="verticalCenter">
+										<div align="center">
+											<img src="http://btl-dnepr.ua/public/site/img/map.png" width="189px"/>
+										</div>
+									</div>
+								</div>
+								<div class="frontFaceRotator">
+									<div class="verticalCenter">
+										<div align="center">
+											<img src="http://btl-dnepr.ua/public/site/img/map.png" width="189px"/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<p>Аутсорсинг региональной структуры</p>
+						</a>
+					</div>
+					<div class="right animated">
+						<h3>Для бизнеса</h3>
+						<p>
+							Используйте человеческий ресурс нашего агентства для реализации региональных и национальных BTL проектов,  проведение маркетинговых исследований и других профильных задач:						</p>
+						<a class="map" href="" data-toggle="modal" data-target=".error_noscript">
+							<div class="rotationBlock">
+								<div class="backFaceRotator rotatorFix">
+									<div class="verticalCenter">
+										<div align="center">
+											<img src="http://btl-dnepr.ua/public/site/img/promik.png" width="80px">
+										</div>
+									</div>
+								</div>
+								<div class="frontFaceRotator rotatorFix">
+									<div class="verticalCenter">
+										<div align="center">
+											<img src="http://btl-dnepr.ua/public/site/img/promik.png" width="80px">
+										</div>
+									</div>
+								</div>
+							</div>
+							<p>Маркетинговые сервисы и креатив</p>
+						</a>
+					</div>
+					<div class="clrbth"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/rotator.css">
+
+<section class="page3">
+	<div class="page about">
+		<div class="wrapper">
+			<div class="content">
+
+				<div class="top">
+					<div class="left animated">
+						<h3>О КОМПАНИИ</h3>
+						<p>
+							Чтобы предоставить нашим Заказчикам эффективную команду полевого персонала, мы выбираем мотивированных и стремящихся людей, развиваем в них нужные для продаж навыки и способности, делимся опытом наших лучших сотрудников, чтобы добиться нужной компетенции для коммуникации с конечным потребителем.						</p>
+					</div>
+					<div class="right animated">
+						<h3>НАША МИССИЯ</h3>
+						<p>
+							Обеспечение эффективного управления проектами по продвижению товаров и услуг Заказчиков за счёт предоставления способного, грамотного, мотивированного и обученного персонала для реализации маркетинговых мероприятий.						</p>
+					</div>
+					<div class="clrbth"></div>
+				</div>
+
+				<div class="bottom">
+					<div align="center">
+						<a class="article" href="#" data-toggle="modal" data-target=".about-popup1">
+							<span class="ttl">Год основания:</span><br />
+							<span class="inf">2007</span>
+						</a>
+						<a class="article" href="#" data-toggle="modal" data-target=".about-popup2">
+							<span class="ttl">Кол-во проектов:</span><br />
+							<span class="inf">>700</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page4">
+	<div class="page clients">
+		<div class="wrapper">
+			<div class="content animated">
+				<h3 class=" animated">Наши заказчики</h3>
+				<div class='slider animated'>
+					<div class="str3 str_wrap animated">
+						<a href="http://promo.rud.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/7.png"></a>
+						<a href="http://prostor.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/4.png"></a>
+						<a href="http://www.komo.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/11.png"></a>
+						<a href="http://www.mbank.kiev.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/1.png"></a>
+						<a target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/14.png"></a>
+						<a href="http://www.atlant-m.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/5.png"></a>
+						<a href="http://mafia.ua/cities/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/6.png"></a>
+						<a href="http://www.runa.com.ua/index.php/ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/3.png"></a>
+						<a href="http://www.alfabank.ua/creditcard/new/inetrek.php?extId1=51694&extId2=&pid=41181&bid=1607&relid=51694" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/17.png"></a>
+						<a href="http://coffeelife.com.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/9.png"></a>
+						<a href="http://www.autoexpert.in.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/8.png"></a>
+						<a href="http://www.piraeusbank.ua/en" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/2.png"></a>
+						<a href="http://vladam.com.ua" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/13.png"></a>
+						<a href="http://www.eva.dp.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/10.png"></a>
+						<a href="http://vadzaari.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/12.png"></a>
+						<a href="http://imp-gold.dn.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/16.png"></a>
+						<a href="http://www.tusia.ua/" target="_blank"><img src="http://btl-dnepr.ua/public/site/img/clients/15.png"></a>
+					</div>
+				</div>
+				<div class="txt animated">
+					<p>
+						Начиная с 2007 года наше агентство реализовало более 700 проектов различных масштабов: от проведений региональных лифлетингов,
+                        до реализации национальных трэйд-маркетинговых программ,
+                        проведений маркетинговых исследований и ивентов.					</p>
+					<a class="green-btn animated" href="/public/site/img/BTL Dnepr prezent_Ukr.pdf" target="_blank">Скачать презентацию</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="page6">
+	<div class="page recommended">
+		<div class="wrapper">
+			<div class="content animated">
+				<h3 class="animated">НАС РЕКОМЕНДУЮТ</h3>
+				<div class="scroll-solution animated">
+					<div class="articles-wrapper">
+						<div class="left">
+							<div class="article big" data-toggle="modal" data-target=".recommend-popup4">
+
+                                <div class="top">
+                                    <div class="img rec-3"></div>
+                                    <p class="name">Генеральный директор Ушаткин И.В.</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Официальный дилер Volkswagen AG компания «Гранд Авто»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>«…письмо выдано….партнеру по организации BTL и Event мероприятий компании «BTL Днепр»….<br />
+                                        …. отличает профессиональный подход и высокая степень активности…<br />
+                                        … Выражаем свою признательность и благодарность и рекомендуем…»
+                                    </p>
+                                </div>							</div>
+							<div class="article small" data-toggle="modal" data-target=".recommend-popup6">
+
+                                <div class="top">
+                                    <div class="img rec-1"></div>
+                                    <p class="name">Заместитель генерального директора по творческой деятельности Фурманова Ю.А.</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Media Arts Ukraine</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>«…Настоящим письмом, для четкой слаженной работы, рекомендуем «BTL-Днепр» как надежного партнера.»
+                                    </p>
+                                </div>							</div>
+							<div class="article small" data-toggle="modal" data-target=".recommend-popup3">
+
+                                <div class="top">
+                                    <div class="img rec-2"></div>
+                                    <p class="name">Руководитель Операционного отдела Наталия Даценко</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Маркетинговое агентство «TP»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>
+                                        «….Качество работы компании BTL-Dnepr полностью соответствует нашим требованиям и мы готовы рекомендовать эту компанию как надежного и ответственного партнера.»
+                                    </p>
+                                </div>							</div>
+							<div class="article small" data-toggle="modal" data-target=".recommend-popup7">
+
+                                <div class="top">
+                                    <div class="img rec-4"></div>
+                                    <p class="name">Менеджер по работе с регионами Левин М. Д.</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Маркетинговое агентство «Смарт Маркетинг»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>
+                                        «…выражает свою благодарность… за успешное и долговременное сотрудничество в проведении мерчендайзинга продукции компании IDS Group… Мы рекомендуем…»
+                                    </p>
+                                </div>							</div>
+						</div>
+						<div class="right">
+							<div class="article small" data-toggle="modal" data-target=".recommend-popup5">
+
+                                <div class="top">
+                                    <div class="img rec-8"></div>
+                                    <p class="name">Директор Департамента Маркетинга Дороленко И. И.</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Сеть магазинов «proStor»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>«…Высказываем свою благодарность и готовы рекомендовать Агентство как надежного и ответственного партнера с развитой региональной структурой…
+                                        … Рассчитываем на дальнейшее плодотворное сотрудничество с командой BTL Днепр™.»
+                                    </p>
+                                </div>							</div>
+							<div class="article big" data-toggle="modal" data-target=".recommend-popup1">
+
+                                <div class="top">
+                                    <div class="img rec-5"></div>
+                                    <p class="name">Директор Шиндер М.Е.</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Рекламное агентство «ЭД’ХОРС»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>«….Благодаря скоординированным и четким действиям команды BTL Днепр™, нам удалось добиться главной цели – увеличение продаж бытовой техники, а также лояльности к бренду Атлант…»
+                                    </p>
+                                </div>							</div>
+							<div class="article big" data-toggle="modal" data-target=".recommend-popup2">
+
+                                <div class="top">
+                                    <div class="img rec-6"></div>
+                                    <p class="name">Operation Director  Александр Веселовский</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Агентство интегрированных коммуникаций «PROMOTION TECHNOLOGIES»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>
+                                        «Компания «BTL Днепр» является нашим региональным подрядчиком с 2007 года. За этот длительный период было успешно реализовано около сотни различных проектов…»
+                                    </p>
+                                </div>							</div>
+							<div class="article small" data-toggle="modal" data-target=".recommend-popup8">
+
+                                <div class="top">
+                                    <div class="img rec-1"></div>
+                                    <p class="name">Руководитель операционного отдела Анна Коробкина</p>
+                                    <p class="company"><span>Компания:</span> <b></b>Коммуникационная группа «Havas Engage»</p>
+                                </div>
+                                <div class="clrbth"></div>
+                                <div class="txt">
+                                    <p>
+                                        «Выражаем свою благодарность за слаженную и продуктивную работу, за отличную коммуникацию, за умение выходить из самых сложных ситуаций, а также за организацию мероприятий на должном уровне...»
+                                    </p>
+                                </div>							</div>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="seo-btn" data-toggle="modal" data-target=".seo-block">@</a>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+</div>
+<!--                    SLIDER                 -->
+<script>
+	$(window).load(function(){
+		$('.str3').liMarquee();
+	})
+</script>
+
+
+
+
+
+
+<div class="modal fade feedback-popup" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div id='contact_form_holder'>
+					<p class="success-1">Отправлено.
+Для оперативных вопросов и заказа услуг воспользуйтесь кнопкой заказа звонка или свяжитесь с нами по контактам: info@btl-dnepr.ua; +38-067-566-966-0</p>
+					<button id="btn-myclose-1" type="button" class="btn " data-dismiss="modal">Закрыть</button>
+					<form  method="POST" action="javascript:void(null);" onsubmit="call()" id='contact_form'>
+						<p>
+						<div id='name_error' class='error'>Введите ваше имя</div>
+						<div><input class="form-control element-form" type='text' name='name' id='name' placeholder="Как к Вам обращаться?"></div>
+						</p>
+						<p>
+						<div id='send-error' class='error'>Пожалуйста, укажите свой телефон или э-меил</div>
+						<div><input class="form-control element-form" type='text' name='email' id='email' placeholder="Укажите e-mail"></div>
+						</p>
+						<p>
+						<div><input class="form-control element-form" type='text' name='phone' id='phone' placeholder="Укажите контактный номер телефона"></div>
+						</p>
+						<p>
+						<div id='message_error' class='error'> Введите текст сообщения</div>
+						<div><textarea name='message' id='message' placeholder="Напишите отзыв о нашей работе, оставьте коммерческое предложение или информацию о вашей компании.
+Для оперативных вопросов и заказа услуг, воспользуйтесь кнопкой заказа звонка или свяжитесь с нами по контактам: info@btl-dnepr.ua; +38-067-566-966-0" style="min-height: 135px;"></textarea></div>
+						</p>
+						<div id='mail_success' class='success'> Ваше сообщение отправленно.</div>
+						<div id='mail_fail' class='error'>Ваше сообщение не отправленно</div>
+						<p id='cf_submit_p'>
+							<input type='submit' id='send_message' class="btn btn-success" value='Отправить'>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade order-popup" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div id='contact_form_holder-2'>
+					<p class="success-2">Отправлено.
+Для оперативных вопросов и заказа услуг воспользуйтесь кнопкой заказа звонка или свяжитесь с нами по контактам: info@btl-dnepr.ua; +38-067-566-966-0</p>
+					<button id="btn-myclose-2" type="button" class="btn " data-dismiss="modal">Закрыть</button>
+					<form  method="POST" action="javascript:void(null);" onsubmit="call_2()" id='contact_form-2'>
+						<p>
+						<div id='name_error-2' class='error'>Введите ваше имя</div>
+						<div><input class="form-control element-form" type='text' name='name-2' id='name-2' placeholder="Как к Вам обращаться?"></div>
+						</p>
+						<p>
+						<div id='send-error-2' class='error'>Пожалуйста, укажите свой телефон или э-меил</div>
+						<div><input class="form-control element-form" type='text' name='email-2' id='email-2' placeholder="Укажите e-mail"></div>
+						</p>
+						<p>
+						<div><input class="form-control element-form" type='text' name='phone-2' id='phone-2' placeholder="Укажите контактный номер телефона"></div>
+						</p>
+						<p>
+						<div id='message_error-2' class='error'>Введите текст сообщения</div>
+						<div><textarea name='message-2' id='message-2' placeholder="Напишите отзыв о нашей работе, оставьте коммерческое предложение или информацию о вашей компании.
+Для оперативных вопросов и заказа услуг, воспользуйтесь кнопкой заказа звонка или свяжитесь с нами по контактам: info@btl-dnepr.ua; +38-067-566-966-0" style="min-height: 135px;"></textarea></div>
+						</p>
+						<div id='mail_success-2' class='success'>Ваше сообщение отправленно.</div>
+						<div id='mail_fail-2' class='error'>Ваше сообщение не отправленно</div>
+						<p id='cf_submit_p-2'>
+							<input type='submit' id='send_message-2' class="btn btn-success" value='Обратная связь'>
+						</p>
+					</form>
+				</div>
+				<!--
+				<form method="post" action="" id="ajaxform2">
+					<div class="input-group">
+						<input type="text" class="form-control element-form" name="name" placeholder="Как к Вам обращаться" aria-describedby="basic-addon1">
+						<input type="text" class="form-control element-form" name="phone" placeholder="Телефон" aria-describedby="basic-addon1">
+						<input type="text" class="form-control element-form" name="email" placeholder="E-mail" aria-describedby="basic-addon1">
+						<textarea name="message" placeholder="Напишите Ваш вопрос"></textarea>
+						<input class="btn btn-success" type="submit" value="Заказать услугу"/>
+					</div>
+				</form>
+				-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade service-popup1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+
+            <div class="modal-body">
+                <h3>СТИМУЛИРОВАНИЕ ПОКУПАТЕЛЬСКОЙ АКТИВНОСТИ</h3>
+                <div class="img">
+                    <img src="http://btl-dnepr.ua/public/site/img/services-popups/service-1.jpg" />
+                </div>
+                <div class="text">
+                    <ul>
+                        <li>Дегустации</li>
+                        <li>Сэмплинги</li>
+                        <li style="display: none;">Подарок за покупку</li>
+                        <li>Центры выдачи подарков</li>
+                        <li>Работа консультантов</li>
+                        <li>Раздача рекламных материалов<br />
+                            (листовок,буклетов,газет,прочее)
+                        </li>
+                        <li>ХоРеКа активности</li>
+                        <li>Другие промо-акции</li>
+                    </ul>
+                </div>
+                <div class="clrbth"></div>
+            </div>		</div>
+	</div>
+</div>
+<div class="modal fade service-popup2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+
+            <div class="modal-body">
+                <h3>Стимулирование сбыта в тоговых сетях и рознице</h3>
+                <div class="img">
+                    <img src="http://btl-dnepr.ua/public/site/img/services-popups/service-2.jpg" />
+                </div>
+                <div class="text">
+                    <ul>
+                        <li>Программы стимулирования розницы, опта, дилеров</li>
+                        <li>Программы лояльности для покупателей </li>
+                        <li>Стимулирование торгового персонала </li>
+                        <li>Методика «Тайный покупатель»</li>
+                    </ul>
+                    <h4>Мерчандайзинг</h4>
+                    <ul>
+                        <li>Разработка стандартов мерчандайзинга </li>
+                        <li>Оптимальная выкладка продукции и рекламных  материалов в точках продаж, работа мерчандайзеров </li>
+                        <li>Производство и установка POS-материалов </li>
+                    </ul>
+                </div>
+                <div class="clrbth"></div>
+            </div>		</div>
+	</div>
+</div>
+<div class="modal fade service-popup3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+
+            <div class="modal-body">
+                <h3>Организация событий</h3>
+                <div class="img">
+                    <img src="http://btl-dnepr.ua/public/site/img/services-popups/service-3.jpg" />
+                </div>
+                <div class="text">
+                    <ul>
+                        <li>Специальные события (праздничные открытия  торговых точек, бренд-зоны, дни открытых дверей,  презентация новинок и прочее) </li>
+                        <li>Массовки и «Флеш-мобы»</li>
+                        <li style="display: none;">Подарок за покупку</li>
+                        <li>Конференции, презентации, тренинги, семинары, выставки</li>
+                        <li>«Роуд-шоу» по стране </li>
+                        <li>Корпоративы, праздники, вечеринки</li>
+                    </ul>
+                </div>
+                <div class="clrbth"></div>
+            </div>		</div>
+	</div>
+</div>
+<div class="modal fade service-popup4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+
+            <div class="modal-body">
+                <h3>Маркетинговые исследования и социологические опросы</h3>
+                <div class="img">
+                    <img src="http://btl-dnepr.ua/public/site/img/services-popups/service-4.jpg" />
+                </div>
+                <div class="text">
+                    <ul>
+                        <li>«Кабинетные» маркетинговые исследования</li>
+                        <li>«Полевые» исследования
+                            <ul class="inner-ul">
+                                <li>- анкетирования</li>
+                                <li>- социологические опросы</li>
+                                <li>- сбор данных</li>
+                                <li>- продвижение товаров с юридическим
+                                    ограничением ("маркетинговые исследования" табачных изделий и  алкоголя)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Фокус-группы</li>
+                        <li>Математическая интерпретация полученных данных</li>
+                    </ul>
+                </div>
+                <div class="clrbth"></div>
+            </div>		</div>
+	</div>
+</div>
+
+<style type="text/css">
+
+	.service-popup5 .modal-body {
+		padding: 100px;
+	}
+</style>
+
+<div class="modal fade service-popup5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" style="display: table;">
+		<div class="modal-content" style="display: table-cell;vertical-align: middle;">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+
+            <div class="modal-body">
+                <h3>Аутсорсинг региональной структуры</h3>
+                <div class="text">
+                    <p>
+                        Услуга Field Force – аутсорсинг региональной структуры, возможность для маркетинговых и рекламных агентств, а также производителей товаров и услуг использовать человеческий ресурс нашей компании для реализации «полевых» задач на территории всей Украины.
+                    </p>
+                    <p>
+                        Услуга Field Force: Ваш удаленный операционный отдел (24/7), сильные «полевые команды», оптимизация расходов и человеческих ресурсов вашей компании.
+                    </p>
+                </div>
+                <div class="clrbth"></div>
+            </div>		</div>
+	</div>
+</div>
+
+<div class="modal fade service-popup6" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+
+            <div class="modal-body">
+                <h3>Прямой маркетинг</h3>
+                <div class="img">
+                    <img src="http://btl-dnepr.ua/public/site/img/services-popups/service-5.jpg" />
+                </div>
+                <div class="text">
+                    <ul>
+                        <li>Адресная\ безадресная доставка (газет,  хенгеров на дверные ручки, специальной   корреспонденции, посылок, др.) </li>
+                        <li>Массовые поздравления ключевых Клиентов (Ваши поздравления и подарки попадут непосредственно в руки адресатам,возможны оригинальные сценарии)</li>
+                        <li>Создание \ актуализация баз данных   (адреса\контактные лица предприятий и пр.)</li>
+                    </ul>
+                </div>
+                <div class="clrbth"></div>
+            </div>		</div>
+	</div>
+</div>
+
+
+
+
+<div class="modal fade about-popup1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="text">
+					<p>Наше btl агентство существует на рынке Украины с 2007 года. Начиная с небольшого офиса в Днепропетровске и единичных  Заказчиков, мы быстро выросли и продолжаем успешно развиваться.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade about-popup2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="text">
+					<p>За долгие годы работы мы реализовали более семи сотен проектов по направлениям promotion, trade marketing, event, marketing research, direct mail.					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade about-popup3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="text">
+					<p>Управление  проектами выполняют представительства в Киеве и Днепропетровске. Мы имеем координаторов проектов и опытных супервайзеров во всех крупных городах Украины, что позволяет организовывать BTL-мероприятия в любом уголке страны.					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="modal fade recommend-popup1" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-1.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-2.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup3" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-3.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup4" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-4.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup5" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-5.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup6" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-6.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup7" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-7.png" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade recommend-popup8" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<img src="http://btl-dnepr.ua/public/site/img/letters/letter-8.jpg" />
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade development" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					Данный раздел временно не работает. Сайт находится в разработке.
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade sorry_ua" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					Вибачте, але презентацiя на Росiйськiй мовi.<br />
+					<a class="green-btn-last animated" href="/public/site/img/BTL Dnepr prezent_Ukr.pdf" target="_blank">Скачать презентацию</a>
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade sorry_en" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					Sorry, presentations on Russian language.<br />
+					<a class="green-btn-last animated" href="/public/site/img/BTL Dnepr prezent_Ukr.pdf" target="_blank">Скачать презентацию</a>
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade error_noscript" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" style="width: 500px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close" style="    margin-top: -12px;"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<!--<b>ДЛЯ БИЗНЕСА</b><br>-->
+					У нас Вы можете заказать не только лучших промоутеров,
+профессиональных интервьюеров, педантичных мерчандайзеров, шустрых
+курьеров, дотошных аудиторов, очень убедительных тайных покупателей,
+роскошных хостесс и любой другой профильный персонал в любой точке
+Украины.<br/><br/>
+Мы также разрабатываем коммуникационные решения и креативные идеи
+для ATL\BTL\Digital.<br/>					<a href='http://btl-dnepr.ua/public/site/img/MINDGINEER_PRESENTATION_MASTER.pdf' target="_blanc">Смотреть презентацию.</a>
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.green-btn-last{
+		display: table;
+		margin: 40px auto;
+		padding: 10px 25px;
+		background-color: #4db848;
+		-webkit-border-radius: 5px !important;
+		-moz-border-radius: 5px !important;
+		border-radius: 5px !important;
+		color: #ffffff;
+	}
+	.green-btn-last:hover{
+		color: #ffffff;
+	}
+	.sorry_ua .modal-header {
+		border-bottom: 0px solid #e5e5e5;
+	}
+	.sorry_en .modal-header {
+		border-bottom: 0px solid #e5e5e5;
+	}
+</style>
+<div class="modal fade seo-block" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close myclose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="img">
+					<h3>БОЛЬШЕ О НАС</h3>
+					<p>
+						Успешную деятельность компании на потребительском рынке трудно представить  без правильно
+						выстроенных маркетинговых коммуникаций с клиентом. Как отечественным, так и зарубежным
+						производителям и дистрибуторам в этом случае приходят на помощь рекламные или маркетинговые
+						агентства, а для организации специальных событий – BTL-агентства или EVENT-агентства (агентства
+						event-маркетинга). Спектр услуг таких компаний широк – в Вашем распоряжении организация промо-
+						акций с привлечением специально подготовленных и обученных промоутеров или организация
+						специальных событий с привлечением «селебрити» и VIP-персон, проведение дегустаций и сэмплинг
+						(раздача образцов продукции), лифлетинг (раздача листовок и буклетов) и хостесс-сервис. И пусть
+						Вас не пугает обилие иностранных слов, таких как филд-форс менеджер  (field force manager) или
+						мерчендайзинг (merchandising)- наша компания всегда готова прийти на помощь и стать надежным
+						партнером, обеспечить не только контакты с представителями ЦА (целевой аудитории), но и
+						посодействовать конвертации  контактов  в продажи.
+						Например, Вы хотите принять участие в выставке. Это достаточно просто, поскольку мы
+						профессионально организуем  для Вас полный цикл услуг:
+						- оформление выставочного стенда и подготовка англоговорящих стендистов для работы с Вашей
+						продукцией;
+						- организация пресс-конференции и подготовка пресс-релизов для журналистов; подготовка
+						итогового пресс-кита;
+						- создание и валидирование баз данных предприятий и контактных лиц, почтовая рассылка или
+						курьерская доставка пригласительных билетов и информационных материалов;
+						- подготовка и брендирование сувениров;
+						- фуршет для ваших клиентов (мы самостоятельно побеспокоимся о создании бренд-зоны и HoReCa-
+						сервисе, ведущих и МС деловой и развлекательной программах).
+					</p>
+					<p>
+						Организация конференций, тренингов, семинаров, съездов, презентаций!? Без проблем! Мы
+						поможем с подборкой зала и звукоусиливающей аппаратурой, посодействуем  в сборе и издании
+						тезисов, встрече и проводах гостей, обеспечим заказ проживания и трансфера,  подачи легкового и
+						грузового  транспорта.
+						А, может, речь идет о торжественном открытии новой торговой точки?! Или нужно организовать
+						день открытых дверей на Вашем предприятии? И с этим мы не видим сложностей. Оформление
+						входа воздушными шарами, музыкальное сопровождение, сценарий для ведущих и
+						брендированные сувениры для покупателей, подготовка фотоотчетов для сайта и видеосюжетов для
+						телевидения помогут обеспечить плановый уровень продаж и высокую узнаваемость среди
+						потенциальных покупателей.
+					</p>
+					<p>
+						А если Ваш подход к маркетингу продаж более серьезный и профессиональный, то мы готовы начать
+						сотрудничество на более ранней стадии, а именно:
+						- изучить (выявить)  мнения и предпочтения потенциальных потребителей: провести маркетинговые
+						исследования и разработать анкеты для анкетирования респондентов, предоставить интервьюеров и
+						организовать фокус-группы, обеспечить сбор и обработку данных и оценить конъюнктуру целевого
+						рынка, подготовить выводы и рекомендации, обеспечивать мониторинг рынка  в соответствии с
+						согласованным графиком, осуществлять сбор и передачу данных.
+						- на более поздних стадиях обеспечить профессиональный мерчендайзинг и подготовку POS-
+						материалов (хенгеры, шелфтокеры, ценникодержатели, воблеры, ценники, стопперы, промостойки,
+						топперы, диспенсеры и прочее), сделать мониторинг цен конкурентов и сравнительный анализ,
+						применить технологию «тайный покупатель»(mystery shopping) во всех Ваших торговых точках, даже
+						самых отдаленных, провести аудит и оценить эффективность работы торгового персонала.
+					</p>
+					<p>
+						Вы можете поручить нам не только аутстаффинг при проведении региональных мероприятий, но и
+						полный аутсорсинг при проведении национальных промо-акций, поскольку у нас  в активе более
+						шестисот успешно реализованных национальных и региональных проектов по направлениям
+						promotion, trade marketing, event, marketing research, direct mail, с обеспечением необходимого
+						клиентам  покрытия; сеть сотрудников или партнеров- супервайзеров, координаторов и промоутеров
+						в Киеве, Днепропетровске, Кривом Роге, Кировограде, Павлограде, Днепродзержинске, Никополе,
+						Запорожье, Мелитополе, Бердянске, Геническ, Одессе, Херсоне, Николаеве, Харькове, Полтаве,
+						Хмельницком, Виннице, Ровно, Ивано-Франковске и  во Львове. Уровень подготовки персонала
+						позволяет нам  проводить как полевые исследования «под ключ» в коммерческих целях, так и
+						социологические опросы или анкетирование по заказам политических партий или общественных
+						организаций.
+					</p>
+					<p>
+						Мы хотим поблагодарить многочисленных деловых партнеров, с которыми нас связывает
+						долговременное сотрудничество, за то, что они  рекомендуют нас  другим компаниям, отмечая
+						высокий профессионализм и оперативность, международные  стандарты коммуникации,
+						корпоративную культуру, высокую степень активности и ответственности. Мы направляем наши силы
+						и умения на продвижение и увеличение продаж продукции  клиентов и помогаем формированию у
+						потребителей   лояльности к бренду. Мы открыты и готовы к сотрудничеству! Добро пожаловать!
+					</p>
+				</div>
+				<div class="clrbth"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/main.js"></script>
+
+<style type="text/css">
+	div:focus, a:focus, div:active, a:active  {
+		outline: none;
+	}
+</style>
+
+</body>
+</html>

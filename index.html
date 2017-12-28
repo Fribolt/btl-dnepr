@@ -4,13 +4,13 @@
 <head>
 	<title>BTL-Dnepr</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
 	<link rel="shortcut icon" href="http://btl-dnepr.ua/public/site/img/favicon.png">
 	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/style.css">
 	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/rotator.css">
 	<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery-min.js"></script>
 	<script src="http://btl-dnepr.ua/public/admin/site_scripts/js/bootstrap.js"></script>
-
 
 	<!--                    Slider                      -->
 	<link rel="stylesheet" href="http://btl-dnepr.ua/public/admin/site_scripts/css/liMarquee.css">
@@ -19,32 +19,23 @@
 	<link rel="shortcut icon" id="favicon" href="http://btl-dnepr.ua/public/site/img/favicon.png">
 	<meta name="author" content="Pete R.">
 
-
 	<link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/animate.css">
-	<script type="text/javascript" src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery.onepage-scroll.js"></script>
-	<link href='http://btl-dnepr.ua/public/admin/site_scripts/css/onepage-scroll.css' rel='stylesheet' type='text/css'>
+	<!-- <script type="text/javascript" src="http://btl-dnepr.ua/public/admin/site_scripts/js/jquery.onepage-scroll.js"></script> -->
+	<!-- <link href='http://btl-dnepr.ua/public/admin/site_scripts/css/onepage-scroll.css' rel='stylesheet' type='text/css'> -->
+	<link rel="stylesheet" href="css/mobile.css">
 
     <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/mobile.css">
 
-
-
-
-	<style>
-	</style>
 	<script>
-		$(document).ready(function(){
-			$(".main").onepage_scroll({
-				sectionContainer: "section",
-				responsiveFallback: 600,
-				loop: true
-			});
-		});
+	// $(document).ready(function(){
+	// 	$(".main").onepage_scroll({
+	// 		sectionContainer: "section",
+	// 		responsiveFallback: 600,
+	// 		loop: true
+	// 	});
+	// });
 
 	</script>
-
-
-
 
 	<style type='text/css'>
 		#contact_form_holder {
@@ -67,60 +58,6 @@
 		#contact_logo { vertical-align: middle; }
 		.error img { vertical-align:top; }
 	</style>
-	<script type='text/javascript'>
-		/*
-		$(document).ready(function(){
-			$('#send_message').click(function(e){
-				e.preventDefault();
-
-				var error = false;
-				var name = $('#name').val();
-				var email = $('#email').val();
-				var subject = $('#subject').val();
-				var message = $('#message').val();
-
-				if(name.length == 0){
-					var error = true;
-					$('#name_error').fadeIn(500);
-				}else{
-					$('#name_error').fadeOut(500);
-				}
-				if(email.length == 0 || email.indexOf('@') == '-1'){
-					var error = true;
-					$('#email_error').fadeIn(500);
-				}else{
-					$('#email_error').fadeOut(500);
-				}
-				if(subject.length == 0){
-					var error = true;
-					$('#subject_error').fadeIn(500);
-				}else{
-					$('#subject_error').fadeOut(500);
-				}
-				if(message.length == 0){
-					var error = true;
-					$('#message_error').fadeIn(500);
-				}else{
-					$('#message_error').fadeOut(500);
-				}
-
-				if(error == false){
-					$('#send_message').attr({'disabled' : 'true', 'value' : 'Sending...' });
-
-					$.post("send_feedback", $("#contact_form").serialize(),function(result){
-						if(result == 'sent'){
-							$('#cf_submit_p').remove();
-							$('#mail_success').fadeIn(500);
-						}else{
-							$('#mail_fail').fadeIn(500);
-							$('#send_message').removeAttr('disabled').attr('value', 'Send The Message');
-						}
-					});
-				}
-			});
-		});
-		*/
-	</script>
 
 	<script type="text/javascript" language="javascript">
 		function call() {
@@ -182,6 +119,30 @@
 
 </head>
 <body style="">
+<div class="mobile_header">
+	<a class="mobile_logo" href="http://btl-dnepr.ua"></a>
+	<div class="lang-panel">
+		<a class="active" href="http://btl-dnepr.ua/ru">RU</a>
+		<a class="" href="http://btl-dnepr.ua/ua">UA</a>
+		<a class="" href="http://btl-dnepr.ua/en">EN</a>
+	</div>
+	<div class="button_menu"></div>
+</div>
+<div class="popup_menu">
+	<a data-index="" href="#nav_services">Маркетинговые сервисы</a>
+	<a data-index="9" href="#nav_partners">Партнерство</a>
+	<a data-index="3" href="#nav_about">О нас</a>
+	<a data-index="4" href="#nav_clients">Довольные заказчики</a>
+	<a data-index="5" href="#nav_recommended">Нас рекомендуют</a>
+	<div class="contact_info">
+		<p>+38 (067) 566 96 60</p>
+		<p>info@btl-dnepr.ua</p>
+	</div>
+	<div class="buttons">
+		<a class="feedback" href="#" onclick="$('#contact_form').css('display','block');$('.success-1').css('display','none'); $('#btn-myclose-1').css('display','none');" data-toggle="modal" data-target=".feedback-popup">Обратная связь</a>
+		<a class="vacancies" href="/promoter-work" target="_blank">Вакансии</a>
+	</div>
+</div>
 <div class="header">
 	<div class="wrapper">
 		<a class="logo" href="#"></a>
@@ -216,9 +177,9 @@
 				<h1 class=" animated bounceInDown parser">Хотите, чтобы каждый маркетинговый проект приносил <br>Вам результат, на который Вы рассчитываете?</h1>
 				<!-- <p class="txt-info blured animated bounceInDown"></p> -->
 				<p class="txt-info animated bounceInDown">Полевые проекты несут в себе ряд рисков, связанных с человеческим фактором.<br> Опыт и профессионализм нашей команды позволяет стабильно получать блестящие результаты.</p>
-				<!--<a class="green-btn animated bounceInDown" href="#" onclick="$('#contact_form-2').css('display','block');$('.success-2').css('display','none'); $('#btn-myclose-2').css('display','none');" data-toggle="modal" data-target=".order-popup">далее на сайт</a>-->
-				<!-- <a class="new-next green-btn animated bounceInDown next-block" href="#" style="-webkit-border-radius: 5px 5px 33px 33px !important;-moz-border-radius: 5px 5px 33px 33px!important;border-radius: 5px 5px 33px 33px !important;background: none;  display: table; width:auto; height:auto;margin: 40px auto; margin-top:75px;padding: 10px 25px;background-color: #4db848;" onclick="//$('#contact_form-2').css('display','block');$('.success-2').css('display','none'); $('#btn-myclose-2').css('display','none');">далее на сайт<span></span></a> -->
-				<!--<a class="next-block animated bounceInDown" href="#"></a>-->
+				<!-- <a class="green-btn animated bounceInDown" href="#" onclick="$('#contact_form-2').css('display','block');$('.success-2').css('display','none'); $('#btn-myclose-2').css('display','none');" data-toggle="modal" data-target=".order-popup">далее на сайт</a>
+				<a class="new-next green-btn animated bounceInDown next-block" href="#" style="-webkit-border-radius: 5px 5px 33px 33px !important;-moz-border-radius: 5px 5px 33px 33px!important;border-radius: 5px 5px 33px 33px !important;background: none;  display: table; width:auto; height:auto;margin: 40px auto; margin-top:75px;padding: 10px 25px;background-color: #4db848;" onclick="//$('#contact_form-2').css('display','block');$('.success-2').css('display','none'); $('#btn-myclose-2').css('display','none');">далее на сайт<span></span></a>
+				<a class="next-block animated bounceInDown" href="#"></a> -->
 
 				<div class="ex-scroll-button animated next-block bounceInDown" onclick="">Крутить вниз</div>
 				<style type="text/css">
@@ -232,7 +193,7 @@
 	</div>
 </section>
 <section class="page2">
-	<div class="page services">
+	<div data-index="9" class="page services"   id="nav_services">
 		<div class="wrapper">
 			<div class="content">
 				<h2>УСЛУГИ</h2>
@@ -273,7 +234,7 @@
 </section>
 
 <section class="page5">
-	<div class="page partners">
+	<div class="page partners" id="nav_partners">
 	   <div class="wrapper">
 			<div class="content">
 				<div class="top">
@@ -282,6 +243,8 @@
 						<p>
 							BTL-Днепр уже не первый год является региональным представительством в ряде городов для крупных международных агентств, таких как Havas Engage, Talan Communications, Media Arts Group (FCB Kiev), Business Tuning Center и для многих других агентств. Имея должный опыт и ресурс, предлагаем уникальную услугу для маркетинговых и рекламных агентств: 						</p>
 						<a class="map" href="http://btl-dnepr.ua/public/site/img/BTL.pdf" target="_blank">
+							<!-- В блоке без класса картинка для моб устроиств 	 -->
+							<div></div>
 							<div class="rotationBlock mapRotator">
 								<div class="backFaceRotator mapBackFaceFix">
 									<div class="verticalCenter">
@@ -301,11 +264,15 @@
 							<p>Аутсорсинг региональной структуры</p>
 						</a>
 					</div>
+					<!-- Разделяет блок left && right -->
+					<div class="block_separation"></div>
 					<div class="right animated">
 						<h3>Для бизнеса</h3>
 						<p>
 							Используйте человеческий ресурс нашего агентства для реализации региональных и национальных BTL проектов,  проведение маркетинговых исследований и других профильных задач:						</p>
 						<a class="map" href="" data-toggle="modal" data-target=".error_noscript">
+							<!-- В блоке без класса картинка для моб устроиств 	 -->
+							<div></div>
 							<div class="rotationBlock">
 								<div class="backFaceRotator rotatorFix">
 									<div class="verticalCenter">
@@ -335,7 +302,7 @@
 <link rel="stylesheet" type="text/css" href="http://btl-dnepr.ua/public/admin/site_scripts/css/rotator.css">
 
 <section class="page3">
-	<div class="page about">
+	<div class="page about" id="nav_about">
 		<div class="wrapper">
 			<div class="content">
 
@@ -345,6 +312,8 @@
 						<p>
 							Чтобы предоставить нашим Заказчикам эффективную команду полевого персонала, мы выбираем мотивированных и стремящихся людей, развиваем в них нужные для продаж навыки и способности, делимся опытом наших лучших сотрудников, чтобы добиться нужной компетенции для коммуникации с конечным потребителем.						</p>
 					</div>
+					<!-- Разделяет блок left && right -->
+					<div class="block_separation"></div>
 					<div class="right animated">
 						<h3>НАША МИССИЯ</h3>
 						<p>
@@ -372,7 +341,7 @@
 	</div>
 </section>
 <section class="page4">
-	<div class="page clients">
+	<div class="page clients"   id="nav_clients">
 		<div class="wrapper">
 			<div class="content animated">
 				<h3 class=" animated">Наши заказчики</h3>
@@ -410,7 +379,7 @@
 </section>
 
 <section class="page6">
-	<div class="page recommended">
+	<div class="page recommended" id="nav_recommended">
 		<div class="wrapper">
 			<div class="content animated">
 				<h3 class="animated">НАС РЕКОМЕНДУЮТ</h3>
@@ -570,7 +539,7 @@
 						<p>
 						<div id='message_error' class='error'> Введите текст сообщения</div>
 						<div><textarea name='message' id='message' placeholder="Напишите отзыв о нашей работе, оставьте коммерческое предложение или информацию о вашей компании.
-Для оперативных вопросов и заказа услуг, воспользуйтесь кнопкой заказа звонка или свяжитесь с нами по контактам: info@btl-dnepr.ua; +38-067-566-966-0" style="min-height: 135px;"></textarea></div>
+Для оперативных вопросов и заказа услуг, воспользуйтесь кнопкой заказа звонка или свяжитесь с нами по контактам: info@btl-dnepr.ua; +38-067-566-966-0"></textarea></div>
 						</p>
 						<div id='mail_success' class='success'> Ваше сообщение отправленно.</div>
 						<div id='mail_fail' class='error'>Ваше сообщение не отправленно</div>
@@ -1167,6 +1136,7 @@
 </div>
 
 <script src="http://btl-dnepr.ua/public/admin/site_scripts/js/main.js"></script>
+<script src="js/mobile.js"></script>
 
 <style type="text/css">
 	div:focus, a:focus, div:active, a:active  {

@@ -75,7 +75,8 @@
 .menu_active {
     display: block;
 }
-
+.about .bottom .article:nth-child(1) .ttl ,
+.about .bottom .article:nth-child(1) .inf ,
 .about .bottom .article:nth-child(2) .ttl ,
 .about .bottom .article:nth-child(2) .inf {
     /*CSS transitions*/

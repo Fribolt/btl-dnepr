@@ -76,8 +76,8 @@
     display: block;
 }
 
-* ,
-*:hover {
+.about .bottom .article:nth-child(2) .ttl ,
+.about .bottom .article:nth-child(2) .inf {
     /*CSS transitions*/
     -o-transition-property: none !important;
     -moz-transition-property: none !important;
@@ -179,24 +179,24 @@ body .popup_menu {
     content: " ";
 }
 
-.popup_menu a:nth-child(1)::before {
-    background: url(../images/icon.png) 1px 1px no-repeat;
+.popup_menu .mobile_icon:nth-child(1)::before {
+    background: url(../images/icon.png) 0 1px no-repeat;
 }
 
-.popup_menu a:nth-child(2)::before {
-    background: url(../images/icon.png) 1px -85px no-repeat;
+.popup_menu .mobile_icon:nth-child(2)::before {
+    background: url(../images/icon.png) 0 -85px no-repeat;
 }
 
-.popup_menu a:nth-child(3)::before {
-    background: url(../images/icon.png) 1px -170px no-repeat;
+.popup_menu .mobile_icon:nth-child(3)::before {
+    background: url(../images/icon.png) 0 -170px no-repeat;
 }
 
-.popup_menu a:nth-child(4)::before {
-    background: url(../images/icon.png) 1px -252px no-repeat;
+.popup_menu .mobile_icon:nth-child(4)::before {
+    background: url(../images/icon.png) 0 -252px no-repeat;
 }
 
-.popup_menu a:nth-child(5)::before {
-    background: url(../images/icon.png) 1px -334px no-repeat;
+.popup_menu .mobile_icon:nth-child(5)::before {
+    background: url(../images/icon.png) 0 -334px no-repeat;
 }
 .popup_menu p {
     display: inline;
@@ -208,6 +208,11 @@ body .popup_menu {
     float: left;
 }
 
+.contact_info p:last-child {
+    float: right;
+    margin-right: 25px;
+}
+
 .popup_menu .contact_info p:nth-child(1)::before {
     float: left;
     width: 80px;
@@ -215,11 +220,6 @@ body .popup_menu {
     margin-top: 25px;
     content: " ";
     background: url(../images/phone_icon.png) no-repeat;
-}
-
-.contact_info p:last-child {
-    float: right;
-    margin-right: 25px;
 }
 
 .buttons {
